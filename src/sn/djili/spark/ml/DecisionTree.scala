@@ -3,8 +3,7 @@ package sn.djili.spark.ml
 import org.apache.spark.SparkContext
 import org.apache.spark.sql.SQLContext
 import org.apache.log4j.{Logger,Level}
-import org.apache.spark.ml.feature.Binarizer
-import org.apache.spark.ml.feature.VectorAssembler
+import org.apache.spark.ml.feature.{VectorAssembler,Binarizer}
 import org.apache.spark.ml.classification.DecisionTreeClassifier
 import org.apache.spark.ml.Pipeline
 import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator

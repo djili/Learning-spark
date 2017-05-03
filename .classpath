@@ -210,5 +210,10 @@
 	<classpathentry kind="lib" path="D:/spark/jars/xmlenc-0.52.jar"/>
 	<classpathentry kind="lib" path="D:/spark/jars/xz-1.0.jar"/>
 	<classpathentry kind="lib" path="D:/spark/jars/zookeeper-3.4.6.jar"/>
+	<classpathentry kind="lib" path="D:/spark/jars/twitter4j-core-4.0.4.jar"/>
+	<classpathentry kind="lib" path="D:/spark/jars/twitter4j-stream-4.0.4.jar"/>
+	<classpathentry kind="lib" path="D:/spark/jars/jdbc.jar"/>
+	<classpathentry kind="lib" path="D:/spark/jars/dstream-twitter_2.11-0.1.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="D:/spark/jars/postgresql-42.0.0.jre6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
