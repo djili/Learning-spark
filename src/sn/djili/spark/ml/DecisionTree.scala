@@ -7,6 +7,7 @@ import org.apache.spark.ml.feature.{VectorAssembler,Binarizer}
 import org.apache.spark.ml.classification.DecisionTreeClassifier
 import org.apache.spark.ml.Pipeline
 import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator
+import org.apache.spark.mllib.evaluation.MulticlassMetrics
 
 /**
  * use the DecisionTree to determine if day will be wet or not
@@ -93,14 +94,19 @@ object DecisionTree {
                         .setPredictionCol("prediction")
                         .setMetricName("accuracy")
     val accuracy = evaluator.evaluate(prediction)
+    println("Accuracy rate = "+accuracy)
     println("Test Error = " + (1.0 - accuracy))
     
+    //see confusion matrix
+    val metrics =new MulticlassMetrics(prediction.rdd.map(x=>(x,1))
+    
+    
     // write result real results and results predicted (from testing dataset) into csv file
-    prediction.select("prediction", "label")
+    /*prediction.select("prediction", "label")
               .coalesce(1)
               .write
               .format("com.databricks.spark.csv")
               .option("header", "true")
-              .save("../resultDecisionTreeWeather")
+              .save("../resultDecisionTreeWeather")*/
   }
 }
