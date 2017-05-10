@@ -12,38 +12,26 @@ import org.apache.log4j.{Logger,Level}
 object WordCount {
   def main (args: Array[String]){
     
-    //mettre le niveau de log a erreur par defaut il est en INFO
+    //to see just error in logs
     Logger.getLogger("org").setLevel(Level.ERROR)
     
-    //creation du context
+    //create a context 
     val sc=new SparkContext("local[*]","WordCount")
     
-    //chargement du text
+    //take the text
     val book=sc.textFile("your textfile path")
     
-    //rdd par mot utilisant une regex 
+    //use regex to split text into words
     val words=book.flatMap(line=>line.split("\\W+"))
     
-    //normaliser tous less mots en minusccule
+    //make words into lowerCase
     val min=words.map(word=>word.toLowerCase())
     
-    //donner la valeur 1 a chaque mot pour un futur comptage par mot
+    //give the value 1 to each word
     val map=min.map(x=>(x,1))
     
-    //comptage   
+    //count by key words   
     val count=map.reduceByKey((x,y)=>(x+y))
     
-    //inverser l'affichage en (valeur,cle)
-    val inverserCount=count.map(x=>(x._2,x._1))
-    
-    //tri 
-    val inverseCountSorted=inverserCount.sortByKey()
-    
-    //affichage
-    for (result <- inverseCountSorted) {
-      val count = result._1
-      val word = result._2
-      println(s"$word: $count")
-    }
   }
 }

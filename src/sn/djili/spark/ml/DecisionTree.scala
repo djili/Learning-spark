@@ -97,16 +97,13 @@ object DecisionTree {
     println("Accuracy rate = "+accuracy)
     println("Test Error = " + (1.0 - accuracy))
     
-    //see confusion matrix
-    val metrics =new MulticlassMetrics(prediction.rdd.map(x=>(x,1))
-    
     
     // write result real results and results predicted (from testing dataset) into csv file
-    /*prediction.select("prediction", "label")
+    prediction.select("prediction", "label")
               .coalesce(1)
               .write
               .format("com.databricks.spark.csv")
               .option("header", "true")
-              .save("../resultDecisionTreeWeather")*/
+              .save("../resultDecisionTreeWeather")
   }
 }
